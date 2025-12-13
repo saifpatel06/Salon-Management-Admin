@@ -1,36 +1,38 @@
 .weekView {
-  background: white;
+  display: flex;
   overflow-x: auto;
-}
-
-.weekGrid {
-  display: grid;
-  grid-template-columns: 100px repeat(7, 1fr);
-  min-width: 900px;
+  min-height: 600px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
 }
 
 .timeColumn {
-  border-right: 2px solid #e9ecef;
+  flex-shrink: 0;
+  width: 80px;
+  border-right: 1px solid #e1e1e1;
+  background: #faf9f8;
 }
 
-.timeHeaderCell {
-  height: 80px;
-  border-bottom: 2px solid #e9ecef;
+.timeHeader {
+  height: 60px;
+  border-bottom: 1px solid #e1e1e1;
 }
 
-.timeCell {
-  height: 80px;
+.timeSlot {
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #e1e1e1;
   font-size: 0.75rem;
+  color: #605e5c;
   font-weight: 600;
-  color: #6c757d;
-  border-bottom: 1px solid #f1f3f5;
 }
 
 .dayColumn {
-  border-right: 1px solid #e9ecef;
+  flex: 1;
+  min-width: 140px;
+  border-right: 1px solid #e1e1e1;
 }
 
 .dayColumn:last-child {
@@ -38,121 +40,120 @@
 }
 
 .dayHeader {
-  height: 80px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-bottom: 2px solid #e9ecef;
-  background: #f8f9fa;
+  border-bottom: 1px solid #e1e1e1;
+  background: #faf9f8;
   gap: 0.25rem;
 }
 
 .todayHeader {
-  background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);
-  border-bottom-color: #0d6efd;
+  background: #e3f2fd;
 }
 
 .dayName {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #6c757d;
+  font-weight: 600;
+  color: #605e5c;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.todayHeader .dayName {
-  color: #0d6efd;
 }
 
 .dayDate {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #333;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #323130;
 }
 
-.todayHeader .dayDate {
-  color: #0d6efd;
+.todayDate {
+  background: #0078d4;
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-.timeSlot {
-  height: 80px;
-  border-bottom: 1px solid #f1f3f5;
+.appointmentSlot {
+  height: 60px;
+  border-bottom: 1px solid #e1e1e1;
   padding: 0.25rem;
   position: relative;
 }
 
 .appointmentCard {
-  border-radius: 6px;
+  background: #f3f2f1;
+  border-left: 4px solid;
+  border-radius: 2px;
   padding: 0.5rem;
-  color: white;
-  font-size: 0.75rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 0.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  height: 100%;
+  overflow: hidden;
 }
 
 .appointmentCard:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #e1dfdd;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.appointmentTime {
+.cardTime {
+  font-size: 0.75rem;
   font-weight: 700;
+  color: #323130;
   margin-bottom: 0.25rem;
 }
 
-.appointmentCustomer {
+.cardCustomer {
+  font-size: 0.875rem;
   font-weight: 600;
+  color: #323130;
   margin-bottom: 0.25rem;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.appointmentService {
+.cardService {
+  font-size: 0.75rem;
+  color: #605e5c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardBarber {
   font-size: 0.7rem;
-  opacity: 0.9;
-  margin-bottom: 0.25rem;
-}
-
-.appointmentBarber {
-  font-size: 0.7rem;
-  opacity: 0.9;
-}
-
-/* Mobile Responsive */
-@media (max-width: 1024px) {
-  .weekGrid {
-    min-width: 800px;
-  }
-
-  .timeColumn {
-    grid-template-columns: 80px repeat(7, 1fr);
-  }
+  color: #8a8886;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-  .weekGrid {
-    grid-template-columns: 60px repeat(7, minmax(100px, 1fr));
-    min-width: 700px;
+  .weekView {
+    min-height: 500px;
   }
 
-  .timeCell {
-    font-size: 0.625rem;
+  .timeColumn {
+    width: 60px;
   }
 
-  .dayHeader {
-    height: 60px;
+  .dayColumn {
+    min-width: 100px;
   }
 
   .dayDate {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
-  .appointmentCard {
-    font-size: 0.625rem;
-    padding: 0.375rem;
+  .todayDate {
+    width: 28px;
+    height: 28px;
   }
 }

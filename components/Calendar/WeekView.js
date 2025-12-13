@@ -1,7 +1,6 @@
 import styles from './WeekView.module.css';
 
 export default function WeekView({ currentDate, appointments, barberColors, onAppointmentClick }) {
-  // Get week dates
   const weekStart = new Date(currentDate);
   weekStart.setDate(currentDate.getDate() - currentDate.getDay());
   
@@ -12,13 +11,9 @@ export default function WeekView({ currentDate, appointments, barberColors, onAp
     weekDays.push(day);
   }
 
-  // Time slots (9 AM to 8 PM)
   const timeSlots = [];
-  for (let hour = 9; hour <= 20; hour++) {
-    timeSlots.push({
-      hour,
-      label: hour > 12 ? `${hour - 12}:00 PM` : `${hour}:00 AM`,
-    });
+  for (let hour = 8; hour <= 20; hour++) {
+    timeSlots.push(hour);
   }
 
   const getAppointmentsForDateTime = (date, hour) => {
@@ -36,64 +31,59 @@ export default function WeekView({ currentDate, appointments, barberColors, onAp
 
   const isToday = (date) => {
     const today = new Date();
-    return (
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear()
-    );
+    return date.toDateString() === today.toDateString();
+  };
+
+  const formatTime = (hour) => {
+    if (hour === 0) return '12 AM';
+    if (hour === 12) return '12 PM';
+    return hour > 12 ? `${hour - 12} PM` : `${hour} AM`;
   };
 
   return (
     <div className={styles.weekView}>
-      <div className={styles.weekGrid}>
-        {/* Time Column */}
-        <div className={styles.timeColumn}>
-          <div className={styles.timeHeaderCell}></div>
-          {timeSlots.map(slot => (
-            <div key={slot.hour} className={styles.timeCell}>
-              {slot.label}
-            </div>
-          ))}
-        </div>
-
-        {/* Day Columns */}
-        {weekDays.map(day => (
-          <div key={day.toISOString()} className={styles.dayColumn}>
-            <div className={`${styles.dayHeader} ${isToday(day) ? styles.todayHeader : ''}`}>
-              <div className={styles.dayName}>
-                {day.toLocaleDateString('en-US', { weekday: 'short' })}
-              </div>
-              <div className={styles.dayDate}>
-                {day.getDate()}
-              </div>
-            </div>
-
-            {timeSlots.map(slot => {
-              const slotAppointments = getAppointmentsForDateTime(day, slot.hour);
-              
-              return (
-                <div key={slot.hour} className={styles.timeSlot}>
-                  {slotAppointments.map(apt => (
-                    <div
-                      key={apt.id}
-                      className={styles.appointmentCard}
-                      style={{ 
-                        backgroundColor: barberColors[apt.barber] || '#6c757d',
-                      }}
-                      onClick={() => onAppointmentClick && onAppointmentClick(apt)}
-                    >
-                      <div className={styles.appointmentTime}>{apt.time}</div>
-                      <div className={styles.appointmentCustomer}>{apt.customerName}</div>
-                      <div className={styles.appointmentService}>{apt.service}</div>
-                      <div className={styles.appointmentBarber}>👨‍💼 {apt.barber}</div>
-                    </div>
-                  ))}
-                </div>
-              );
-            })}
+      <div className={styles.timeColumn}>
+        <div className={styles.timeHeader}></div>
+        {timeSlots.map(hour => (
+          <div key={hour} className={styles.timeSlot}>
+            {formatTime(hour)}
           </div>
         ))}
       </div>
+
+      {weekDays.map(day => (
+        <div key={day.toISOString()} className={styles.dayColumn}>
+          <div className={`${styles.dayHeader} ${isToday(day) ? styles.todayHeader : ''}`}>
+            <div className={styles.dayName}>
+              {day.toLocaleDateString('en-US', { weekday: 'short' })}
+            </div>
+            <div className={`${styles.dayDate} ${isToday(day) ? styles.todayDate : ''}`}>
+              {day.getDate()}
+            </div>
+          </div>
+
+          {timeSlots.map(hour => {
+            const slotAppointments = getAppointmentsForDateTime(day, hour);
+            return (
+              <div key={hour} className={styles.appointmentSlot}>
+                {slotAppointments.map(apt => (
+                  <div
+                    key={apt.id}
+                    className={styles.appointmentCard}
+                    style={{ borderLeftColor: barberColors[apt.barber] }}
+                    onClick={() => onAppointmentClick(apt)}
+                  >
+                    <div className={styles.cardTime}>{apt.time}</div>
+                    <div className={styles.cardCustomer}>{apt.customerName}</div>
+                    <div className={styles.cardService}>{apt.service}</div>
+                    <div className={styles.cardBarber}>{apt.barber}</div>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      ))}
     </div>
   );
 }

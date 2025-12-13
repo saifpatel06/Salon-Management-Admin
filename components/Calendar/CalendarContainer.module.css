@@ -1,0 +1,172 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e1e1e1;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.todayBtn {
+  background: white;
+  border: 1px solid #8a8886;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #323130;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.todayBtn:hover {
+  background: #f3f2f1;
+  border-color: #605e5c;
+}
+
+.navButtons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.navBtn {
+  background: white;
+  border: 1px solid #8a8886;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.25rem;
+  color: #323130;
+}
+
+.navBtn:hover {
+  background: #f3f2f1;
+  border-color: #605e5c;
+}
+
+.viewTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #323130;
+}
+
+.viewSwitcher {
+  display: flex;
+  gap: 0.25rem;
+  background: #f3f2f1;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.viewBtn {
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #323130;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.viewBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.viewBtn.active {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.calendarContent {
+  flex: 1;
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e1e1e1;
+  flex-wrap: wrap;
+}
+
+.legendTitle {
+  font-weight: 600;
+  color: #605e5c;
+  font-size: 0.875rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #605e5c;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    min-height: calc(100vh - 140px);
+  }
+
+  .toolbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .toolbarLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .viewTitle {
+    font-size: 1rem;
+  }
+
+  .viewSwitcher {
+    width: 100%;
+  }
+
+  .viewBtn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .calendarContent {
+    padding: 1rem;
+  }
+}
