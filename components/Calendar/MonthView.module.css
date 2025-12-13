@@ -1,0 +1,131 @@
+.monthView {
+  background: white;
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dayName {
+  text-align: center;
+  font-weight: 700;
+  color: #495057;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendarDay {
+  min-height: 100px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendarDay:hover {
+  border-color: #0d6efd;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calendarDayEmpty {
+  min-height: 100px;
+}
+
+.dayNumber {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.today {
+  background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);
+  border-color: #0d6efd;
+  border-width: 3px;
+}
+
+.today .dayNumber {
+  color: #0d6efd;
+  font-size: 1.125rem;
+}
+
+.appointmentsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.barberAppointment {
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  transition: all 0.2s ease;
+}
+
+.barberAppointment:hover {
+  transform: scale(1.1);
+}
+
+.appointmentCount {
+  font-size: 0.75rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .calendarDay {
+    min-height: 80px;
+    padding: 0.5rem;
+  }
+
+  .dayNumber {
+    font-size: 0.875rem;
+  }
+
+  .barberAppointment {
+    font-size: 0.625rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendarDay {
+    min-height: 60px;
+    padding: 0.25rem;
+  }
+
+  .dayName {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .calendarGrid {
+    gap: 0.25rem;
+  }
+
+  .dayNames {
+    gap: 0.25rem;
+  }
+}

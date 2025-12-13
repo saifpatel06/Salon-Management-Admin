@@ -1,0 +1,66 @@
+.appointmentsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.appointmentsHeader h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+
+.toggleButton {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #6c757d;
+}
+
+.toggleButton:hover {
+  color: #333;
+}
+
+.toggleButton.active {
+  background: white;
+  color: #0d6efd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .appointmentsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .appointmentsHeader h2 {
+    font-size: 1.5rem;
+  }
+
+  .viewToggle {
+    width: 100%;
+  }
+
+  .toggleButton {
+    flex: 1;
+    text-align: center;
+  }
+}

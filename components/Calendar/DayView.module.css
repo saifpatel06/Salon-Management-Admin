@@ -1,0 +1,175 @@
+.dayView {
+  background: white;
+  overflow-x: auto;
+}
+
+.dayGrid {
+  min-width: 800px;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: #e9ecef;
+  margin-bottom: 1px;
+}
+
+.timeHeaderCell {
+  background: #495057;
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.barberHeaderCell {
+  background: white;
+  padding: 1rem;
+  text-align: center;
+  border-top: 4px solid;
+}
+
+.barberName {
+  font-weight: 700;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.barberSpecialty {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+.timeRow {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: #e9ecef;
+  margin-bottom: 1px;
+}
+
+.timeCell {
+  background: #f8f9fa;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.875rem;
+  border-right: 2px solid #e9ecef;
+}
+
+.appointmentSlot {
+  background: white;
+  padding: 0.5rem;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.available {
+  background: #f8f9fa;
+}
+
+.availableSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6c757d;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.appointmentCard {
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointmentCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.appointmentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.appointmentTime {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.appointmentStatus {
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.appointmentCustomer {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.appointmentService {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .dayGrid {
+    min-width: 700px;
+  }
+
+  .headerRow, .timeRow {
+    grid-template-columns: 80px repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dayGrid {
+    min-width: 600px;
+  }
+
+  .headerRow, .timeRow {
+    grid-template-columns: 60px repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .timeCell {
+    font-size: 0.75rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .barberHeaderCell {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .barberName {
+    font-size: 0.875rem;
+  }
+
+  .appointmentCard {
+    padding: 0.5rem;
+  }
+}
