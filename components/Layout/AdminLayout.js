@@ -84,6 +84,14 @@ export default function AdminLayout({ children, pageTitle }) {
               >
                 📅 Appointments
               </Link>
+              <Link
+                href="/admin/invoices"
+                className={`btn w-100 text-start mb-2 ${
+                  isActive('/admin/invoices') ? 'btn-primary' : 'btn-outline-light'
+                }`}
+              >
+                💼 Invoices
+              </Link>
             </nav>
           </div>
         </div>
